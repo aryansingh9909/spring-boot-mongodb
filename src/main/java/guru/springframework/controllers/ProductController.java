@@ -1,7 +1,7 @@
 package guru.springframework.controllers;
 
-import guru.springframework.commands.ProductForm;
-import guru.springframework.converters.ProductToProductForm;
+import guru.springframework.commands.PatientForm;
+import guru.springframework.converters.ProductToPatientForm;
 import guru.springframework.domain.Product;
 import guru.springframework.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +21,11 @@ import javax.validation.Valid;
 public class ProductController {
     private ProductService productService;
 
-    private ProductToProductForm productToProductForm;
+    private ProductToPatientForm productToPatientForm;
 
     @Autowired
-    public void setProductToProductForm(ProductToProductForm productToProductForm) {
-        this.productToProductForm = productToProductForm;
+    public void setProductToPatientForm(ProductToPatientForm productToPatientForm) {
+        this.productToPatientForm = productToPatientForm;
     }
 
     @Autowired
@@ -53,7 +53,7 @@ public class ProductController {
     @RequestMapping("product/edit/{id}")
     public String edit(@PathVariable String id, Model model){
         Product product = productService.getById(id);
-        ProductForm productForm = productToProductForm.convert(product);
+        PatientForm productForm = productToPatientForm.convert(product);
 
         model.addAttribute("productForm", productForm);
         return "product/productform";
@@ -66,13 +66,13 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/product", method = RequestMethod.POST)
-    public String saveOrUpdateProduct(@Valid ProductForm productForm, BindingResult bindingResult){
+    public String saveOrUpdateProduct(@Valid PatientForm productForm, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             return "product/productform";
         }
 
-        Product savedProduct = productService.saveOrUpdateProductForm(productForm);
+        Product savedProduct = productService.saveOrUpdatePatientForm(productForm);
 
         return "redirect:/product/show/" + savedProduct.getId();
     }

@@ -1,7 +1,7 @@
 package guru.springframework.services;
 
-import guru.springframework.commands.ProductForm;
-import guru.springframework.converters.ProductFormToProduct;
+import guru.springframework.commands.PatientForm;
+import guru.springframework.converters.PatientFormToProduct;
 import guru.springframework.domain.Product;
 import guru.springframework.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
-    private ProductFormToProduct productFormToProduct;
+    private PatientFormToProduct productFormToProduct;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, ProductFormToProduct productFormToProduct) {
+    public ProductServiceImpl(ProductRepository productRepository, PatientFormToProduct productFormToProduct) {
         this.productRepository = productRepository;
         this.productFormToProduct = productFormToProduct;
     }
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product saveOrUpdateProductForm(ProductForm productForm) {
+    public Product saveOrUpdatePatientForm(PatientForm productForm) {
         Product savedProduct = saveOrUpdate(productFormToProduct.convert(productForm));
 
         System.out.println("Saved Product Id: " + savedProduct.getId());

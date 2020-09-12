@@ -1,6 +1,6 @@
 package guru.springframework.services;
 
-import guru.springframework.commands.ProductForm;
+import guru.springframework.commands.PatientForm;
 import guru.springframework.domain.Product;
 
 import java.util.List;
@@ -18,5 +18,5 @@ public interface ProductService {
 
     void delete(String id);
 
-    Product saveOrUpdateProductForm(ProductForm productForm);
+    Product saveOrUpdatePatientForm(PatientForm productForm);
 }

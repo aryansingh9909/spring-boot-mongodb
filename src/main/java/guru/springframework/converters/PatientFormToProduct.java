@@ -1,6 +1,6 @@
 package guru.springframework.converters;
 
-import guru.springframework.commands.ProductForm;
+import guru.springframework.commands.PatientForm;
 import guru.springframework.domain.Product;
 import org.bson.types.ObjectId;
 import org.springframework.core.convert.converter.Converter;
@@ -11,10 +11,10 @@ import org.springframework.util.StringUtils;
  * Created by jt on 1/10/17.
  */
 @Component
-public class ProductFormToProduct implements Converter<ProductForm, Product> {
+public class PatientFormToProduct implements Converter<PatientForm, Product> {
 
     @Override
-    public Product convert(ProductForm productForm) {
+    public Product convert(PatientForm productForm) {
         Product product = new Product();
         if (productForm.getId() != null  && !StringUtils.isEmpty(productForm.getId())) {
             product.setId(new ObjectId(productForm.getId()));

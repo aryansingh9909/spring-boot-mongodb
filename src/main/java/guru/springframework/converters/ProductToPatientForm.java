@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductToPatientForm implements Converter<Product, PatientForm> {
     @Override
-    public ProductForm convert(Product product) {
+    public PatientForm convert(Product product) {
         PatientForm productForm = new PatientForm();
         productForm.setId(product.getId().toHexString());
         productForm.setDescription(product.getDescription());

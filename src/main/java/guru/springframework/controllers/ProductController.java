@@ -61,7 +61,7 @@ public class ProductController {
 
     @RequestMapping("/product/new")
     public String newProduct(Model model){
-        model.addAttribute("productForm", new ProductForm());
+        model.addAttribute("productForm", new PatientForm());
         return "product/productform";
     }
 
